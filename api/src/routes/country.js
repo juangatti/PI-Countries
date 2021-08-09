@@ -16,7 +16,7 @@ router.get('/', async  (req, res) => {
         const apiUrl = await axios.get(`https://restcountries.eu/rest/v2/all`)
          
         if(name){
-            console.log("Entre puto")
+            
 
             var match = await paisesFiltrados(name)
            
