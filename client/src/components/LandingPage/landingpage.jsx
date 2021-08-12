@@ -8,10 +8,9 @@ export function LandingP() {
     return(
         <div>
             <h1>  Bienvenidos a mi app!</h1>
-            <button type="button">
-            <Link to ="/countries">  </Link>
-            Ingresar!
-            </button>
+            
+            <Link to ="/countries"> Welcome! </Link>
+            
           
         </div>
     )

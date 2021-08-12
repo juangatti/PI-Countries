@@ -3,8 +3,8 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const{ Country, Activities } = require ('../db')
 const axios = require('axios');
+const {Op} = require('sequelize')
 
-const  {paisesFiltrados} = require('./funciones')
 
 const router = Router();
 
@@ -12,50 +12,35 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/', async  (req, res) => {
     try{
-        const{name} = req.query      
-        const apiUrl = await axios.get(`https://restcountries.eu/rest/v2/all`)
+        const {name} = req.query      
+        
          
         if(name){
             
-
-            var match = await paisesFiltrados(name)
-           
-            return res.status(200).send(match)
-    
+            let country = await Country.findAll({
+                where:{
+                    name:{
+                        [Op.iLike]: `%${name}%`
+                    },
+                },
+                include: Activities
+            })
+            if(country.length > 0) return res.status(200).send(country)
+            return res.status(404).send("pais no encontrado")
+        }else{
+            let allCountries = await Country.findAll({
+                attributes: ['name', 'id', 'region', 'flag' ],
+                include: [Activities]
+            })
+            return res.status(200).send(allCountries)
         }
         
-
-        var newCountry = await apiUrl.data.map((e) =>{
-            Country.findOrCreate({
-
-                where: {id : e.alpha3Code},
-                defaults:{
-                name: e.name,
-                id: e.alpha3Code,
-                region: e.region,
-                subregion: e.subregion,
-                population: e.population,
-                capital: e.capital,
-                area: e.area,
-                flag: e.flag
-                },
-                includes: Activities
-            })
-            return {  
-                name: e.name,
-                id: e.alpha3Code,
-                region: e.region,
-                subregion: e.subregion,
-                population: e.population,
-                capital: e.capital,
-                area: e.area,
-                flag: e.flag
-            }
-        })
-        return res.status(200).send(newCountry)
-    } catch(error){
+    }catch(error){
         console.log(error)
-    }  
+    }
+        
+           
+         
 })
 
 
