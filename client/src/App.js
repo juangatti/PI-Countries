@@ -4,7 +4,7 @@ import {Route} from "react-router-dom"
 import { LandingP } from './components/LandingPage/landingpage';
 import Home from './components/Home/home';
 import CountryDetails from './components/CountryDetail/countryDetail';
-
+import SearchBar from './components/SearchBar/searchbar';
 
 
 

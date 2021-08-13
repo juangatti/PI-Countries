@@ -8,7 +8,7 @@ export default function Cards(props){
 
   const dispatch = useDispatch();
   const couni = useSelector(state => state.allCountries)      
-useEffect(() => {
+    useEffect(() => {
     dispatch(getAll())
 }, [dispatch])  
 

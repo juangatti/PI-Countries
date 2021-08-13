@@ -4,8 +4,8 @@
 const initialState = {
 
     countryDetail: [],
-    allCountries:[]
-
+    allCountries: [],
+    queryMatch: []
 }
 
 export default function rootReducer(state= initialState, action){
@@ -23,7 +23,7 @@ export default function rootReducer(state= initialState, action){
             case "GET_COUNTRY":
             return{
                 ...state,
-                allCountries: action.payload
+                queryMatch: action.payload
             }
             default:
                 return state

@@ -29,7 +29,7 @@ router.get('/', async  (req, res) => {
             return res.status(404).send("pais no encontrado")
         }else{
             let allCountries = await Country.findAll({
-                attributes: ['name', 'id', 'region', 'flag' ],
+                attributes: ['name', 'id', 'region', 'flag','region','capital' ,'subregion', 'population','area'],
                 include: [Activities]
             })
             return res.status(200).send(allCountries)
@@ -45,20 +45,19 @@ router.get('/', async  (req, res) => {
 
 
 router.get('/:id', async (req, res) => {
-    const {id} = req.params;
+  try{
 
-    const idUrl = await axios.get(`https://restcountries.eu/rest/v2/alpha/${id}`)
-    let paisDetalle = {
-        name: idUrl.data.name,
-        id: idUrl.data.alpha3Code,
-        region: idUrl.data.region,
-        subregion: idUrl.data.subregion,
-        population: idUrl.data.population,
-        capital: idUrl.data.capital,
-        area: idUrl.data.area,
-        flag: idUrl.data.flag
-    }
-    return res.status(200).send(paisDetalle)
+      const id = req.params.id.toUpperCase();
+    
+        let countryDetail = await Country.findOne({
+            where: {id},
+            attributes: ['name', 'id', 'region', 'flag','region','capital' ,'subregion', 'population','area'],
+            include: [Activities]
+        })
+        return res.status(200).send(countryDetail)
+  }catch(error){
+      console.log("el pais no existe")
+  }  
 })
 
 

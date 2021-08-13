@@ -1,6 +1,6 @@
 
 const { Router } = require('express');
-const {Activities} = require('../db')
+const {Activities, Country} = require('../db')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -11,10 +11,10 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.post('/', (req, res) => {
    try{
-    const{name, difficulty, duration,season} = req.body
+    const{name, difficulty, duration, season, id} = req.body
     let activity =  Activities.create({name, difficulty, duration, season})
-    idPais.forEach(async (p) =>{
-        let country = await Country.findByPk(p.toUpper());
+    id.map(async (p) =>{
+        let country = await Country.findByPk(p);
         await Activities.addCountry(country) 
     })
     return res.status(200).send(activity)
