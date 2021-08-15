@@ -15,7 +15,7 @@ export default function Nav(){
  const dispatch = useDispatch();
 
  const[order, setOrder] = useState("")
-    const[continent, setContinent] = useState("")
+ const[continent, setContinent] = useState("")
 
     const handleOrderChange = (e) =>{
         setOrder(e.target.value)
