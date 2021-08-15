@@ -1,5 +1,5 @@
 
-
+import {orderAz, orderMayToMen} from '../components/Funciones/funciones'
 
 const initialState = {
 
@@ -23,8 +23,35 @@ export default function rootReducer(state= initialState, action){
             case "GET_COUNTRY":
             return{
                 ...state,
-                queryMatch: action.payload
+                allCountries: action.payload
             }
+            case "ORDER_AZ":
+                return{
+                    ...state,
+                    allCountries: state.allCountries.slice().sort(orderAz)
+                }
+                case "ORDER_ZA":
+                return{
+                    ...state,
+                    allCountries: state.allCountries.slice().sort(orderAz).reverse()
+                }
+                case "ORDER_MAY_TO_MEN":
+                return{
+                    ...state,
+                    allCountries: state.allCountries.slice().sort(orderMayToMen)
+                }
+                case "ORDER_MEN_TO_MAY":
+                return{
+                    ...state,
+                    allCountries: state.allCountries.slice().sort(orderMayToMen).reverse()
+                }
+                case "BY_CONTINENT":
+                return{
+                    ...state,
+                    allCountries: state.allCountries.filter((e) => e.region === action.payload)
+                }
+
+
             default:
                 return state
     }

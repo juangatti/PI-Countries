@@ -19,7 +19,7 @@ export default function SearchBar(){
         console.log(input)
 
         const handleSubmit = (e) => {
-            e.preventDefault()
+            
             dispatch(getAllNames(input));            
           }; 
 
@@ -27,10 +27,20 @@ export default function SearchBar(){
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="input" onChange= {(e)=>handleInputChange(e)} />
-                <input type="submit" value="Search..." />
-            </form>
+            <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => handleInputChange(e)}
+            />
+            {input !== "" ? (
+                <Link to="/countries/search">
+                     <button type="submit" onClick={() => handleSubmit()}>Search</button>
+                </Link>
+            ) :( 
+                <Link to="/countries">
+                <button type="submit" onClick={() => handleSubmit()}>Search</button>
+              </Link>
+            )}
         </div>
         
     )

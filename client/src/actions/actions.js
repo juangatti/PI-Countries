@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY } from "./constantes"
+import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT} from "./constantes"
 import { URL_COUNTRIES  } from "../urlsconst"
 
 
@@ -30,4 +30,36 @@ export function getAllNames(name){
             console.log(error);
         }
     };
+}
+
+
+export function orderByAz(){
+    return{
+        type: ORDER_AZ
+    }
+}
+
+export function orderByZa(){
+    return{
+        type: ORDER_ZA
+    }
+}
+
+export function orderByMayToMen(){
+    return{
+        type: ORDER_MAY_TO_MEN
+    }
+}
+
+export function orderByMenToMay(){
+    return{
+        type: ORDER_MEN_TO_MAY
+    }
+}
+
+export function filterByContinent(payload){
+    return{
+        type:BY_CONTINENT,
+        payload
+    }
 }
