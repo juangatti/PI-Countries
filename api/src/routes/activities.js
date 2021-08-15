@@ -1,4 +1,4 @@
-
+const {Op} = require('sequelize')
 const { Router } = require('express');
 const {Activities, Country} = require('../db')
 // Importar todos los routers;
@@ -9,15 +9,21 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
    try{
     const{name, difficulty, duration, season, id} = req.body
-    let activity =  Activities.create({name, difficulty, duration, season})
-    id.map(async (p) =>{
-        let country = await Country.findByPk(p);
-        await Activities.addCountry(country) 
+    let activityC = await Activities.create({name, difficulty, duration, season})
+    let countryMatch = await Country.findAll({
+        where: {
+           id: id
+        }
     })
-    return res.status(200).send(activity)
+
+    const actCountry = await activityC.addCountry(countryMatch)
+
+
+
+    return res.status(200).send(activityC)
        
 } catch (error){
     console.log(error)

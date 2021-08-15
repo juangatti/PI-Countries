@@ -1,6 +1,6 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { getAll, getAllNames } from "../../actions/actions"
+import { useDispatch } from "react-redux"
+import { getAllNames } from "../../actions/actions"
 import { useState } from "react" 
 import {Link} from "react-router-dom"
 

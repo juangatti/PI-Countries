@@ -15,7 +15,7 @@ export default function CountryDetails() {
 
     useEffect(() => {
       dispatch(getCountryDetail(id))   
-    },[id])
+    },[dispatch,id])
 
 
 
@@ -31,8 +31,8 @@ export default function CountryDetails() {
             <h1>Area: {detail.area} Km</h1>
             <h4>{detail.activities && detail.activities.map(e => {
                 if(e){
-                    return e + " "
-                }
+                    return e.name + " "
+                } return " "
             })} </h4>
         </div>
     );

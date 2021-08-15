@@ -33,6 +33,13 @@ export function getAllNames(name){
 }
 
 
+
+
+
+
+
+
+
 export function orderByAz(){
     return{
         type: ORDER_AZ
