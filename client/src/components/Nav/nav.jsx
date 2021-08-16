@@ -34,6 +34,9 @@ export default function Nav(){
         else if(order === "MenToMAy")dispatch(orderByMenToMay())
     }, [dispatch,order])
 
+
+
+    
     useEffect(() => {
         if(continent){
             getAll()
@@ -49,7 +52,7 @@ export default function Nav(){
     <div>
         <NavLink exact to= "/countries"> Home</NavLink>
         <select onChange={(e) => handleOrderChange(e)}>
-            <option value="all">All</option>
+            <option value ="all"> All</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="MayToMen">MayToMen</option>
@@ -58,6 +61,7 @@ export default function Nav(){
         </select>
         <SearchBar />
         <select onChange={(e) => handleFilterChange(e)}>
+            <option>-</option>
             <option value ="all"> All</option>
             <option value ="Americas"> Americas</option>
             <option value ="Europe"> Europe</option>
@@ -65,5 +69,6 @@ export default function Nav(){
             <option value ="Oceania"> Oceania</option>
             <option value ="Asia"> Asia</option>
             </select>
+            <NavLink exact to="/activities">Create Your Own Tour!</NavLink>
     </div>
 )}

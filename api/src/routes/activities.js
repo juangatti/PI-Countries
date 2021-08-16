@@ -22,8 +22,8 @@ router.post('/', async (req, res) => {
     const actCountry = await activityC.addCountry(countryMatch)
 
 
-
-    return res.status(200).send(activityC)
+    console.log(actCountry)
+    return res.status(200).send(actCountry)
        
 } catch (error){
     console.log(error)

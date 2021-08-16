@@ -1,6 +1,6 @@
 import axios from "axios"
-import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT} from "./constantes"
-import { URL_COUNTRIES  } from "../urlsconst"
+import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT, } from "./constantes"
+import { URL_COUNTRIES , URL_ACTIVITY } from "../urlsconst"
 
 
 
@@ -32,7 +32,16 @@ export function getAllNames(name){
     };
 }
 
-
+export function createActivity(activity){
+    return async function() {
+        try{
+            const newActivity = await axios.post(URL_ACTIVITY, activity)
+            console.log(newActivity)
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
 
 
 
