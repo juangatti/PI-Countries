@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT, } from "./constantes"
+import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT, BY_ACTIVITY} from "./constantes"
 import { URL_COUNTRIES , URL_ACTIVITY } from "../urlsconst"
 
 
@@ -43,12 +43,6 @@ export function createActivity(activity){
     }
 }
 
-
-
-
-
-
-
 export function orderByAz(){
     return{
         type: ORDER_AZ
@@ -76,6 +70,13 @@ export function orderByMenToMay(){
 export function filterByContinent(payload){
     return{
         type:BY_CONTINENT,
+        payload
+    }
+}
+
+export function filterByActivity(payload){
+    return{
+        type:BY_ACTIVITY,
         payload
     }
 }

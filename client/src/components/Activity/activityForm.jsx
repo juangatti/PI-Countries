@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { useState,  } from "react"
 import {  createActivity,  } from '../../actions/actions';
-
+import {Link} from "react-router-dom"
 
 
 export default function ActivityCreate() {
@@ -20,7 +20,7 @@ export default function ActivityCreate() {
         countryName: []
     });
    
-    const [input, setInput] = useState('');
+    
     const dispatch = useDispatch()
 
     function handleChange(e) {
@@ -50,7 +50,11 @@ export default function ActivityCreate() {
 
     return (
         <div>
-
+<div>
+    <Link to="/countries">
+        Home
+        </Link> 
+</div>
             <form onSubmit={(e) =>handleSubmit (e)} autoComplete="off">
                 <div>
                     <label>Name</label>
@@ -132,7 +136,7 @@ export default function ActivityCreate() {
                 </div>
 
                 <div >
-                    <label>Select Countries: <h4> {[input]} </h4> </label>
+                    <label>Select Countries: </label>
                     <select onChange={e=> addCountry(e)}>
                        <option> - </option>
                         {
@@ -143,7 +147,7 @@ export default function ActivityCreate() {
                    <div>
                        {
                            infoForm.countryName?.map(country =>{
-                               return <input value={country} key={country} onClick={e => removeCountry(e) }/>
+                               return <input value={country} key={country} onselect={e => removeCountry(e) }/>
                            })
                        }
                    </div>
