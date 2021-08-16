@@ -11,11 +11,11 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.post('/', async (req, res) => {
    try{
-    const{name, difficulty, duration, season, id} = req.body
+    const{name, difficulty, duration, season, countryName} = req.body
     let activityC = await Activities.create({name, difficulty, duration, season})
     let countryMatch = await Country.findAll({
         where: {
-           id: id
+           name: countryName
         }
     })
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { useState, useEffect } from "react"
-import { getAllNames, createActivity } from '../../actions/actions';
+import { useState,  } from "react"
+import {  createActivity,  } from '../../actions/actions';
 
 
 
@@ -10,101 +10,58 @@ export default function ActivityCreate() {
 
 
 
-    const detail = useSelector((state) => state.allCountries)
+    const countries = useSelector((state) => state.allCountries)
 
     const [infoForm, setInfoForm] = useState({
         name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        id: []
+        difficulty: '1',
+        duration: '1',
+        season: 'Autum',
+        countryName: []
     });
-    const [error, setError] = useState('');
+   
     const [input, setInput] = useState('');
     const dispatch = useDispatch()
 
-    const stateReset = () => {
-        setInfoForm({
-            name: "",
-            difficulty: '',
-            duration: '',
-            season: '',
-            id: []
-        })
-        setInput("")
-    }
-
-    const sumitInput = (e) => {
-        e.preventDefault();
-        setInput(e.target.id)
-    }
-
-    const setDataHandler = (e) => {
-        e.preventDefault();
-        setInfoForm({
-            ...infoForm,
-            [e.target.name]: e.target.value
-        })
-
-    }
-    const setIdHandler = (e) => {
-        e.preventDefault();
-        setInfoForm({
-            ...infoForm,
-            [e.target.id]: e.target.value
-        })
-
-    }
-
-    useEffect(() => {
-        dispatch(getAllNames(input))
-    }, [dispatch, input])
-
-
-
-    function validateInput(value) {
-        var inputPattern = /^[A-Za-z\s]+$/; // Expresion Regular para validar que sean solo strings.
-        if (!inputPattern.test(value)) {
-            setError('Please  enter only alphaletical letters.');
-        } else {
-            setError('')
-        }
-    }
-
     function handleChange(e) {
-        const { value, name } = e.target;
-
-        if (name === 'name') {
-            validateInput(value.name)
-        }
-
-        setInfoForm({
-            ...infoForm,
-            [e.target.name]: e.target.value // Sintaxis ES6 para actualizar la key correspondiente
-        });
+        let temp = {...infoForm}
+        temp[e.target.name] = e.target.value
+        setInfoForm(temp)
     }
 
-    const submitForm = (e) => {
+    async function handleSubmit(e){
         e.preventDefault()
-        dispatch(createActivity(input))
+        dispatch(createActivity(infoForm))
     }
 
+    function addCountry (e) {
+        let temp = {...infoForm }
+        temp.countryName = [...infoForm.countryName, e.target.value];
+        e.target.value = '-'
+        setInfoForm(temp)
+    }
+
+    function removeCountry(e) {
+        let temp = {...infoForm}
+        temp.countryName = temp.countryName.filter(country => country !== e.target.value) 
+    }
 
 
 
     return (
         <div>
 
-            <form onSubmit={(e) => submitForm(e)}>
+            <form onSubmit={(e) =>handleSubmit (e)} autoComplete="off">
                 <div>
+                    <label>Name</label>
                     <input
 
                         type="text"
-                        autoComplete="off"
+                        autoComplete="false"
                         placeholder="Name your activity"
                         name="name"
                         value={infoForm.name}
-                        onChange={handleChange}
+                        onChange={e =>handleChange (e)}
                     />
                 </div>
 
@@ -114,7 +71,7 @@ export default function ActivityCreate() {
                         name="difficulty"
                         value={infoForm.difficulty}
                         id="difficulty"
-                        onChange={setDataHandler}
+                        onChange={e=>handleChange (e)}
                     >
                         <option value={1}>1</option>
                         <option value={2}>2</option>
@@ -130,7 +87,7 @@ export default function ActivityCreate() {
                         name="duration"
                         value={infoForm.duration}
                         id="duration"
-                        onChange={setDataHandler}
+                        onChange={e=>handleChange (e)}
                     >
                         <option value={1}>1</option>
                         <option value={2}>2</option>
@@ -165,9 +122,9 @@ export default function ActivityCreate() {
                         name="season"
                         value={infoForm.season}
                         id="season"
-                        onChange={setDataHandler}
+                        onChange={e => handleChange (e)}
                     >
-                        <option value="Autumn">Autumn</option>
+                        <option value="Autum">Autum</option>
                         <option value="Winter">Winter</option>
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
@@ -175,17 +132,23 @@ export default function ActivityCreate() {
                 </div>
 
                 <div >
-                    <label>Select Countries</label>
-                    <input
-
-                        type="text"
-                        autoComplete="off"
-                        placeholder="find your country..."
-                        onChange={setIdHandler}
-                    />
-                   
+                    <label>Select Countries: <h4> {[input]} </h4> </label>
+                    <select onChange={e=> addCountry(e)}>
+                       <option> - </option>
+                        {
+                        countries && countries.map( country => {
+                            return(<option key={country.name} value={country.name}>{country.name}</option>)
+                    })}
+                   </select>
+                   <div>
+                       {
+                           infoForm.countryName?.map(country =>{
+                               return <input value={country} key={country} onClick={e => removeCountry(e) }/>
+                           })
+                       }
+                   </div>
                 </div>
-                {!error ? null : <div>{error}</div>}
+                
                 <input type="submit" value="Submit" />
             </form>
 
