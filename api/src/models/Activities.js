@@ -4,24 +4,24 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activities', {
-    
+
     name: {
       type: DataTypes.STRING,
-      
+
     },
- 
-    difficulty:{
-      type: DataTypes.ENUM("1", "2", "3", "4","5"),
-            
+
+    difficulty: {
+      type: DataTypes.ENUM("1", "2", "3", "4", "5"),
+
     },
-    duration:{
+    duration: {
       type: DataTypes.STRING,
-     
+
     },
-   
-    season:{
-      type: DataTypes.ENUM('Summer','Autum','Winter','Spring'),
-     
+
+    season: {
+      type: DataTypes.ENUM('Summer', 'Autum', 'Winter', 'Spring'),
+
     },
-  },{timestamps: false});
+  }, { timestamps: false });
 };

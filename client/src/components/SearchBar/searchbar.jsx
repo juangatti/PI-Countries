@@ -1,47 +1,45 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 import { getAllNames } from "../../actions/actions"
-import { useState } from "react" 
-import {Link} from "react-router-dom"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
 
 
-export default function SearchBar(){
-   
-     const dispatch = useDispatch()
-     const [input, setInput] = useState("")
+export default function SearchBar() {
 
-        const handleInputChange =  (e) => {    
-           setInput(e.target.value)
-            
-        }
-        
-        console.log(input)
+    const dispatch = useDispatch()
+    const [input, setInput] = useState("")
 
-        const handleSubmit = (e) => {
-            
-            dispatch(getAllNames(input));            
-          }; 
+    const handleInputChange = (e) => {
+        setInput(e.target.value)
+    }
+
+    
+
+    const handleSubmit = (e) => {
+        dispatch(getAllNames(input));
+    };
 
 
 
-    return(
+    return (
         <div>
             <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => handleInputChange(e)}
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => handleInputChange(e)}
             />
             {input !== "" ? (
                 <Link to="/countries/search">
-                     <button type="submit" onClick={() => handleSubmit()}>Search</button>
+                    <button type="submit" onClick={() => handleSubmit()}>Search</button>
                 </Link>
-            ) :( 
+            ) : (
                 <Link to="/countries">
-                <button type="submit" onClick={() => handleSubmit()}>Search</button>
-              </Link>
+                    <button type="submit" onClick={() => handleSubmit()}>Search</button>
+                </Link>
             )}
         </div>
-        
+
     )
 }

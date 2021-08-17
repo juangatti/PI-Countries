@@ -3,16 +3,13 @@ import Cards from "../Cards/cards"
 import Nav from "../Nav/nav"
 import './home.css'
 import styles from './home.module.css'
-export default function Home(){
+export default function Home() {
     return (
-    <div>
-        <Nav />
-        <div className={`${styles.cardsContainer}`}>
-
-        <Cards />
+        <div>
+            <Nav />
+            <div className={`${styles.cardsContainer}`}>
+                <Cards />
+            </div>
         </div>
-            
-        
-    </div>  
     )
 }

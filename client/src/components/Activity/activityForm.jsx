@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { useState,  } from "react"
-import {  createActivity,  } from '../../actions/actions';
-import {Link} from "react-router-dom"
+import { useState, } from "react"
+import { createActivity, } from '../../actions/actions';
+import { Link } from "react-router-dom"
 
 
 export default function ActivityCreate() {
@@ -19,43 +19,40 @@ export default function ActivityCreate() {
         season: 'Autum',
         countryName: []
     });
-   
-    
+
+
     const dispatch = useDispatch()
 
     function handleChange(e) {
-        let temp = {...infoForm}
+        let temp = { ...infoForm }
         temp[e.target.name] = e.target.value
         setInfoForm(temp)
     }
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault()
         dispatch(createActivity(infoForm))
     }
 
-    function addCountry (e) {
-        let temp = {...infoForm }
+    function addCountry(e) {
+        let temp = { ...infoForm }
         temp.countryName = [...infoForm.countryName, e.target.value];
         e.target.value = '-'
         setInfoForm(temp)
     }
 
-    function removeCountry(e) {
-        let temp = {...infoForm}
-        temp.countryName = temp.countryName.filter(country => country !== e.target.value) 
-    }
+
 
 
 
     return (
         <div>
-<div>
-    <Link to="/countries">
-        Home
-        </Link> 
-</div>
-            <form onSubmit={(e) =>handleSubmit (e)} autoComplete="off">
+            <div>
+                <Link to="/countries">
+                    Home
+                </Link>
+            </div>
+            <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
                 <div>
                     <label>Name</label>
                     <input
@@ -65,7 +62,7 @@ export default function ActivityCreate() {
                         placeholder="Name your activity"
                         name="name"
                         value={infoForm.name}
-                        onChange={e =>handleChange (e)}
+                        onChange={e => handleChange(e)}
                     />
                 </div>
 
@@ -75,7 +72,7 @@ export default function ActivityCreate() {
                         name="difficulty"
                         value={infoForm.difficulty}
                         id="difficulty"
-                        onChange={e=>handleChange (e)}
+                        onChange={e => handleChange(e)}
                     >
                         <option value={1}>1</option>
                         <option value={2}>2</option>
@@ -91,7 +88,7 @@ export default function ActivityCreate() {
                         name="duration"
                         value={infoForm.duration}
                         id="duration"
-                        onChange={e=>handleChange (e)}
+                        onChange={e => handleChange(e)}
                     >
                         <option value={1}>1</option>
                         <option value={2}>2</option>
@@ -122,12 +119,7 @@ export default function ActivityCreate() {
 
                 <div>
                     <label>Select season</label>
-                    <select
-                        name="season"
-                        value={infoForm.season}
-                        id="season"
-                        onChange={e => handleChange (e)}
-                    >
+                    <select name="season" vvalue={infoForm.season} id="season" onChange={e => handleChange(e)}>
                         <option value="Autum">Autum</option>
                         <option value="Winter">Winter</option>
                         <option value="Spring">Spring</option>
@@ -137,22 +129,22 @@ export default function ActivityCreate() {
 
                 <div >
                     <label>Select Countries: </label>
-                    <select onChange={e=> addCountry(e)}>
-                       <option> - </option>
+                    <select onChange={e => addCountry(e)}>
+                        <option> - </option>
                         {
-                        countries && countries.map( country => {
-                            return(<option key={country.name} value={country.name}>{country.name}</option>)
-                    })}
-                   </select>
-                   <div>
-                       {
-                           infoForm.countryName?.map(country =>{
-                               return <input value={country} key={country} onselect={e => removeCountry(e) }/>
-                           })
-                       }
-                   </div>
+                            countries && countries.map(country => {
+                                return (<option key={country.name} value={country.name}>{country.name}</option>)
+                            })}
+                    </select>
+                    <div>
+                        {
+                            infoForm.countryName?.map(country => {
+                                return <input value={country} key={country} />
+                            })
+                        }
+                    </div>
                 </div>
-                
+
                 <input type="submit" value="Submit" />
             </form>
 

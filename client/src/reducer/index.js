@@ -58,13 +58,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 allCountries: state.countriesLoaded.filter((x) => { return x.activities.some((z) => z.name === action.payload) })
             }
-            case"GET_ALL_ACT":
-            return{
+        case "GET_ALL_ACT":
+            return {
                 ...state,
                 actLoaded: action.payload
-
             }
-
         default:
             return state
     }

@@ -8,8 +8,7 @@ import styles from './card.module.css'
 export default function Card(props) {
     console.log(props)
     return (
-        <div className={`${styles.cardWrapper}`}> 
-
+        <div className={`${styles.cardWrapper}`}>
             <Link to={`/countries/details/${props.id}`}  >
                 <div className="card-body"   >
                     <h4 className={`${styles.title}`}>  {props.id} </h4>
