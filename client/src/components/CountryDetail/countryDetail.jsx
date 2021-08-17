@@ -6,7 +6,7 @@ import {getCountryDetail} from "../../actions/actions"
 
 
 
-export default function CountryDetails() {
+export default function CountryDetails(props) {
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.countryDetail)
 
@@ -29,11 +29,12 @@ export default function CountryDetails() {
             <h1>Capital: {detail.capital}</h1>
             <h1>Popuation: {detail.population}</h1>
             <h1>Area: {detail.area} Km</h1>
+            
             <h4>{detail.activities && detail.activities.map(e => {
                 if(e){
                     return e.name + " "
                 } return " "
-            })} </h4>
+            }) } </h4>
         </div>
     );
 }

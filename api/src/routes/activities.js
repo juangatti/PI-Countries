@@ -32,6 +32,20 @@ router.post('/', async (req, res) => {
     
 })
 
-
+router.get('/:id', async (req, res) => {
+    try{
+  
+        const id = req.params.id
+      
+          let actDetail = await Activities.findOne({
+              where: {id},
+              attributes: ['name', 'id', 'difficulty', 'duration','season'],
+              include: [Country]
+          })
+          return res.status(200).send(actDetail)
+    }catch(error){
+        console.log("el pais no existe")
+    }  
+  })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT, BY_ACTIVITY} from "./constantes"
+import { GET_ALL, GET_COUNTRY_ID, GET_COUNTRY , ORDER_AZ, ORDER_ZA, ORDER_MAY_TO_MEN, ORDER_MEN_TO_MAY,BY_CONTINENT, BY_ACTIVITY,GET_ALL_ACT} from "./constantes"
 import { URL_COUNTRIES , URL_ACTIVITY } from "../urlsconst"
 
 
@@ -42,6 +42,17 @@ export function createActivity(activity){
         }
     }
 }
+
+export function getAct(id){
+    return  async (dispatch) =>{
+        const prome = await axios.get(URL_ACTIVITY + `/${id}`)
+        dispatch({type: GET_ALL_ACT, payload: prome.data})
+        
+    }
+}
+
+
+
 
 export function orderByAz(){
     return{

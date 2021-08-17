@@ -5,7 +5,8 @@ const initialState = {
 
     countryDetail: [],
     allCountries: [],
-    countriesLoaded: []
+    countriesLoaded: [],
+    actLoaded: []
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -52,11 +53,17 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 allCountries: state.countriesLoaded.filter((e) => e.region === action.payload)
             }
-            case "BY_ACTIVITY":
-                return {
-                    ...state,
-                    allCountries: state.countriesLoaded.filter((x) => {return x.activities.some((z) => z.name ===  action.payload)})
-                }    
+        case "BY_ACTIVITY":
+            return {
+                ...state,
+                allCountries: state.countriesLoaded.filter((x) => { return x.activities.some((z) => z.name === action.payload) })
+            }
+            case"GET_ALL_ACT":
+            return{
+                ...state,
+                actLoaded: action.payload
+
+            }
 
         default:
             return state
