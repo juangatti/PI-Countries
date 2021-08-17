@@ -4,7 +4,7 @@ import {getAll} from '../../actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import Pagination from "../Pagination/pagination";
-
+import './cards.css'
 
 
 export default function Cards(){
@@ -33,7 +33,7 @@ export default function Cards(){
 
 
     return (
-    <div>
+    <div className='cards'>
         {obj && obj.map((e) => {
             return( <Card key={e.id} id={e.id} region={e.region} flag={e.flag} />)
         })}

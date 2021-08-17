@@ -1,0 +1,8 @@
+.paginationWrapper{
+    position: absolute;
+    bottom: -42%;
+    left: 30%;
+    right: 30%;
+    margin: 3px;
+    padding: 2px;
+}

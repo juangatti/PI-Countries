@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import {getCountryDetail} from "../../actions/actions"
-
+import { Link } from "react-router-dom"
 
 
 export default function CountryDetails(props) {
@@ -21,6 +21,7 @@ export default function CountryDetails(props) {
 
     return (
         <div>
+            <Link to=  "/countries">Home</Link>
             <h1>{detail.name}</h1>
             <img src = {detail.flag}  alt="Flag not found"  width="150px" height="100px"/>
             <h1>{detail.id}</h1>

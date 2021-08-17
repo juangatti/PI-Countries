@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '../Card/card'
 import { useSelector } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 export default function CountryFiltered () {
 
     const match = useSelector((state) => state.allCountries)
@@ -11,7 +11,7 @@ export default function CountryFiltered () {
     return(
         <div>
       
-      
+      <Link to = "/countries">Home</Link>
       <div>
         {match &&
           match.map((e) => {

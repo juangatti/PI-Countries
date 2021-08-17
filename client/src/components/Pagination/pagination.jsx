@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './pagination.module.css'
 
 
 export default function Pagination (props){
@@ -18,7 +18,7 @@ export default function Pagination (props){
 
 
     return(
-        <div>
+        <div className={`${styles.paginationWrapper}`}>
         {
             pages && pages.map( e=>{
             return(
