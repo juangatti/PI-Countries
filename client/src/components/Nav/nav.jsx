@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import SearchBar from "../SearchBar/searchbar"
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
-import { orderByAz, orderByZa, orderByMayToMen, orderByMenToMay, getAll, filterByContinent, filterByActivity } from '../../actions/actions'
+import { orderByAz, orderByZa, orderByMayToMen, orderByMenToMay, getAll, filterByContinent, filterByActivity, getAct } from '../../actions/actions'
 
 
 
@@ -14,7 +14,8 @@ export default function Nav() {
 
     const dispatch = useDispatch();
 
-    const countries = useSelector((state) => state.allCountries)
+    
+    const allAct = useSelector((state) => state.actLoaded)
 
     const [order, setOrder] = useState("")
     const [continent, setContinent] = useState("")
@@ -56,7 +57,9 @@ export default function Nav() {
         else if (activities !== "-") dispatch(filterByActivity(activities))
     }, [dispatch, activities])
 
-
+    useEffect(() => {
+        dispatch(getAct())
+    }, [dispatch, activities])
 
     return (
         <div>
@@ -81,11 +84,11 @@ export default function Nav() {
             <select onChange={(e) => handleFilterActChange(e)}>
                 <option value="-"> -</option>
                 {
-                    countries && countries.map(country => {
-                        return country.activities?.map((activity) => {
-                            return (<option key={activity.name} value={activity.name}>{activity.name}</option>)
+                    allAct && allAct.map(activity => {
+                        return (<option key={activity.name} value={activity.name}>{activity.name}</option>)
+                        
                         })
-                    })}
+                    })
             </select>
         </div>
     )

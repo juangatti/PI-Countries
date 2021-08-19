@@ -43,9 +43,9 @@ export function createActivity(activity){
     }
 }
 
-export function getAct(id){
+export function getAct(){
     return  async (dispatch) =>{
-        const prome = await axios.get(URL_ACTIVITY + `/${id}`)
+        const prome = await axios.get(URL_ACTIVITY )
         dispatch({type: GET_ALL_ACT, payload: prome.data})
         
     }

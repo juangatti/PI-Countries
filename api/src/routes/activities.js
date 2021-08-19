@@ -48,4 +48,18 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+
+
+router.get('/', async (req, res) => {
+    try {
+
+        const act = await Activities.findAll({
+            attributes: ['name', 'id', 'difficulty', 'duration', 'season'],
+        })
+        return res.status(200).send(act)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router;
