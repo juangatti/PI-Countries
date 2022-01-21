@@ -4,7 +4,7 @@ const { Country } = require("../db")
 async function loadCountries(req, res) {
     try {
         
-            const apiUrl = await axios.get(`https://restcountries.com/v3.1/all`)
+            const apiUrl = await axios.get(`https://restcountries.com/v3/all`)
 
             const newCountrys =  apiUrl.data
 
