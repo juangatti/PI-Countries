@@ -3,21 +3,27 @@ const { Country } = require("../db")
 
 async function loadCountries(req, res) {
     try {
-        {
-            const apiUrl = await axios.get(`https://restcountries.eu/rest/v2/all`)
-            var newCountry = await apiUrl.data.map((e) => {
-                Country.create({
-                    name: e.name,
-                    id: e.alpha3Code,
-                    region: e.region,
-                    subregion: e.subregion,
-                    population: e.population,
-                    capital: e.capital,
-                    area: e.area,
-                    flag: e.flag
+        
+            const apiUrl = await axios.get(`https://restcountries.com/v3.1/all`)
+
+            const newCountrys =  apiUrl.data
+
+            newCountrys.map(async (country) => {
+                const { name, cca3, region, subregion, capital, population, area, flags } = country
+               const capitals = JSON.stringify(capital)
+
+
+                await Country.create({
+                    name: name.common,
+                    id: cca3,
+                    region,
+                    subregion ,
+                    capital: capitals,
+                    population,
+                    area,
+                    flag: flags.png
                 })
             })
-        }
 
     } catch (error) {
         console.log(error)
