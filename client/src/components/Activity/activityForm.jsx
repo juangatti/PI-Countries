@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, } from "react"
 import { createActivity, } from '../../actions/actions';
 import { Link } from "react-router-dom"
-
+import s from "./activityform.module.css"
 
 export default function ActivityCreate() {
 
@@ -119,7 +119,7 @@ export default function ActivityCreate() {
 
                 <div>
                     <label>Select season</label>
-                    <select name="season" vvalue={infoForm.season} id="season" onChange={e => handleChange(e)}>
+                    <select name="season" value={infoForm.season} id="season" onChange={e => handleChange(e)}>
                         <option value="Autum">Autum</option>
                         <option value="Winter">Winter</option>
                         <option value="Spring">Spring</option>

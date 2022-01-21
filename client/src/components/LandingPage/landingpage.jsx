@@ -1,16 +1,24 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "./landingpage.css"
+import  s from "./landingpage.module.css"
 
 
 
 export function LandingP() {
     return (
-        <div>
-            <h1>  Bienvenidos a mi PI Countries!</h1>
-            <Link to="/countries">
-                <button>Ingresar</button>
+        <div className={s.all}>
+            <div className={s.titlec}>
+            <h1 className={s.title}>  WorldApp!</h1>
+            </div>
+            <div className={s.container}>
+                <p className={s.text2}>Join us, create your own activities and explore the world...</p>
+                <Link to="/countries">
+                <button  className="btn btn-outline-warning">Ingresar</button>
             </Link>
+            </div>
+            <div>
+            </div>
         </div>
+        
     )
 }

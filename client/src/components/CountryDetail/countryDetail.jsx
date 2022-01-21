@@ -6,15 +6,17 @@ import { getCountryDetail } from "../../actions/actions"
 import { Link } from "react-router-dom"
 
 
-export default function CountryDetails(props) {
+export default function CountryDetails() {
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.countryDetail)
+    
 
-
+    
     let { id } = useParams();
 
     useEffect(() => {
         dispatch(getCountryDetail(id))
+
     }, [dispatch, id])
 
 
@@ -26,8 +28,8 @@ export default function CountryDetails(props) {
             <img src={detail.flag} alt="Flag not found" width="150px" height="100px" />
             <h1>{detail.id}</h1>
             <h1>Continent: {detail.region}</h1>
-            <h1>Subregion: {detail.subregion}</h1>
-            <h1>Capital: {detail.capital}</h1>
+            {detail.subregion !== null ? <h1>Subregion: {detail.subregion}</h1> : null}
+           
             <h1>Popuation: {detail.population}</h1>
             <h1>Area: {detail.area} Km</h1>
 

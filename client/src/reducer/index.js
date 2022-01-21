@@ -6,7 +6,8 @@ const initialState = {
     countryDetail: [],
     allCountries: [],
     countriesLoaded: [],
-    actLoaded: []
+    actLoaded: [],
+    page: 1,
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -26,7 +27,8 @@ export default function rootReducer(state = initialState, action) {
         case "GET_COUNTRY":
             return {
                 ...state,
-                allCountries: action.payload
+                allCountries: action.payload,
+                page: 1,
             }
         case "ORDER_AZ":
             return {
@@ -51,18 +53,25 @@ export default function rootReducer(state = initialState, action) {
         case "BY_CONTINENT":
             return {
                 ...state,
-                allCountries: state.countriesLoaded.filter((e) => e.region === action.payload)
+                allCountries: state.countriesLoaded.filter((e) => e.region === action.payload),
+                page: 1,
             }
         case "BY_ACTIVITY":
             return {
                 ...state,
-                allCountries: state.countriesLoaded.filter((x) => { return x.activities.some((z) => z.name === action.payload) })
+                allCountries: state.countriesLoaded.filter((x) => { return x.activities.some((z) => z.name === action.payload) }),
+                page: 1,
             }
         case "GET_ALL_ACT":
             return {
                 ...state,
                 actLoaded: action.payload
             }
+            case "PAGE":
+                return{
+                    ...state,
+                    page:action.payload
+                }
         default:
             return state
     }

@@ -1,49 +1,40 @@
 import React from "react"
-import Card from '../Card/card'
-import { getAll } from '../../actions/actions'
+import Cardx from '../Card/card'
+import { getAll,page } from '../../actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react';
-import Pagination from "../Pagination/pagination";
-import './cards.css'
-
+import { useEffect,  } from 'react';
+import s from  './cards.module.css'
+import { Grid } from '@nextui-org/react';
+import { Pagination } from '@nextui-org/react';
 
 export default function Cards() {
 
     const dispatch = useDispatch();
     const couni = useSelector(state => state.allCountries)
+    const pages =  useSelector(state => state.page)
     useEffect(() => {
         dispatch(getAll())
     }, [dispatch])
 
-
-    const [page, setPage] = useState(1);
-    const [countryPerPage] = useState(9)
-
-    let nextPage = page * countryPerPage;
-    let lastPage = nextPage - countryPerPage;
-
-    function renderPage(num) {
-        setPage(num)
+    const countryPerPage = 6;
+    const lastCountryIndex = pages * countryPerPage;
+    const firstRecipeIndex = lastCountryIndex - countryPerPage;
+    const currentCountry = couni.slice(firstRecipeIndex, lastCountryIndex);
+    const handleChange = (e) => {    
+        dispatch(page(e));
     }
 
-    const obj = couni.slice(lastPage, nextPage)
+    const numberOfButtons = Math.ceil(couni.length / countryPerPage);
 
 
-
-
-
-    return (
-        <div className='cards'>
-            {obj && obj.map((e) => {
-                return (<Card key={e.id} id={e.id} region={e.region} flag={e.flag} />)
+    return (      
+        <Grid.Container gap={2} justify="center" align="center">
+            {currentCountry && currentCountry.map((e) => {
+                return (<Cardx key={e.id} id={e.id} region={e.region} flag={e.flag} name={e.name} />)
             })}
-            <div>
-                <Pagination countries={couni} countryPp={countryPerPage} renderPage={renderPage} />
-
-
-            </div>
-
-        </div>
-
+            <Grid xs={6} >
+            <Pagination rounded  shadow color="secondary" total={numberOfButtons} initialPage={1} onChange= { (e) => handleChange(e)} controls="true" />    
+            </Grid>
+        </Grid.Container>
     )
 }
