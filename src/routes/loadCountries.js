@@ -10,7 +10,7 @@ async function loadCountries(req, res) {
 
             newCountrys.map(async (country) => {
                 const { name, cca3, region, subregion, capital, population, area, flags } = country
-               const capitals = JSON.stringify(capital)
+              // const capitals = JSON.stringify(capital)
 
 
                 await Country.create({
@@ -18,10 +18,10 @@ async function loadCountries(req, res) {
                     id: cca3,
                     region,
                     subregion ,
-                    capital: capitals,
+                    capital:  (capital && capital[0]) || "Este país no tiene una capital",
                     population,
                     area,
-                    flag: flags.png
+                    flag:  flags.find((e) => e.includes("png")) || "No se ha encontrado la",
                 })
             })
 
