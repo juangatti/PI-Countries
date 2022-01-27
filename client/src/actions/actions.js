@@ -24,7 +24,7 @@ export function getCountryDetail(id){
 export function getAllNames(name){
     return async (dispatch) => {
         try{
-            const prome = await axios.get(`https://countryvity.herokuapp.com/countries?name=${name}`)
+            const prome = await axios.get(URL_COUNTRIES + `?name=${name}`)
             dispatch({type: GET_COUNTRY, payload: prome.data})
         }catch(error){
             console.log(error);

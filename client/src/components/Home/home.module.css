@@ -1,6 +1,7 @@
 .cardsContainer {
     display: flex;
-    justify-content: space-around;
     min-height: 100vh;
+    flex-wrap: wrap;
+    align-content: space-around;
 }
 

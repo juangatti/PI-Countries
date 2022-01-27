@@ -31,14 +31,18 @@ export default function CountryDetails() {
             <h1>Continent: {detail.region}</h1>
             {detail.subregion !== null ? <h1>Subregion: {detail.subregion}</h1> : null}
            
-            <h1>Popuation: {detail.population}</h1>
+            <h1>Population: {detail.population}</h1>
             <h1>Area: {detail.area} Km</h1>
 
-            <h4>{detail.activities && detail.activities.map(e => {
-                if (e) {
-                    return e.name + " "
-                } return " "
-            })} </h4>
+           <h1>Actividades: {detail.activities === undefined ? <h1>"No hay actividades asociadas "</h1> :<h4>
+                {detail.activities && detail.activities.map(e => {
+                   if (e) {
+                       return e.name 
+                   } return <h1>No hay actividades asociadas </h1>
+               })}
+            </h4>
+            }
+            </h1>
         </div>
     );
 }
