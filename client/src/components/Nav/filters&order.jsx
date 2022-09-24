@@ -98,7 +98,7 @@ export default function FiltersOrder() {
                                     return (<option key={activity.name} value={activity.name}>{activity.name}</option>)
                                     
                                     })
-                                })
+                                }
                         </select>
                     </Box>
                 </Box>
