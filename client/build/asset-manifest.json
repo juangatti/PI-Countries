@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.364fc447.chunk.css",
+    "main.js": "/static/js/main.be94ebdc.chunk.js",
+    "main.js.map": "/static/js/main.be94ebdc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0ec9b98d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0ec9b98d.js.map",
+    "static/js/2.118af67d.chunk.js": "/static/js/2.118af67d.chunk.js",
+    "static/js/2.118af67d.chunk.js.map": "/static/js/2.118af67d.chunk.js.map",
+    "static/js/3.eca49f7c.chunk.js": "/static/js/3.eca49f7c.chunk.js",
+    "static/js/3.eca49f7c.chunk.js.map": "/static/js/3.eca49f7c.chunk.js.map",
+    "static/js/4.f769e3b6.chunk.js": "/static/js/4.f769e3b6.chunk.js",
+    "static/js/4.f769e3b6.chunk.js.map": "/static/js/4.f769e3b6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.364fc447.chunk.css.map": "/static/css/main.364fc447.chunk.css.map",
+    "static/js/2.118af67d.chunk.js.LICENSE.txt": "/static/js/2.118af67d.chunk.js.LICENSE.txt",
+    "static/media/landingpage.module.css": "/static/media/wallpaperuse.com-eye-soothing-wallpaper-221536.37a358a9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0ec9b98d.js",
+    "static/js/2.118af67d.chunk.js",
+    "static/css/main.364fc447.chunk.css",
+    "static/js/main.be94ebdc.chunk.js"
+  ]
+}
