@@ -1,8 +1,7 @@
 import React from 'react'
 import Card from '../Card/card'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import SearchBar from "../SearchBar/searchbar"
+import Nav from "../Nav/nav"
 
 
 
@@ -20,17 +19,18 @@ export default function CountryFiltered() {
 
   return (
     <div>
-      <SearchBar />
+      <Nav />
       <div>
         <div>
           <h1> Results:</h1>
         </div>
-        {copyMatch.length === match.length ?
-          <div>
-            <h1> Country Not Found:</h1>
-            <Link to="/countries"> Home</Link>
-          </div> :
-          <div>
+        {(copyMatch.length === match.length) 
+        ?
+        <>
+          <h1> Country Not Found</h1>
+          </> 
+          :
+          <>
             {match &&
               match.map((e) => {
                 return (
@@ -44,7 +44,7 @@ export default function CountryFiltered() {
                   />
                 );
               })}
-          </div>
+          </>
         }
       </div>
     </div>

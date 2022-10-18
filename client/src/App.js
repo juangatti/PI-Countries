@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { LandingP } from './components/LandingPage/landingpage';
 import Home from './components/Home/home';
 import CountryDetails from './components/CountryDetail/countryDetail';
@@ -11,11 +11,13 @@ import ActivityCreate from './components/Activity/activityForm';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={LandingP} />
-      <Route exact path="/countries" component={Home} />
-      <Route exact path="/activities" component={ActivityCreate} />
-      <Route exact path="/countries/details/:id" component={CountryDetails} />
-      <Route exact path="/countries/search" component={CountryFiltered} />
+      <Routes>
+        <Route  path="/" element={<LandingP />} />
+        <Route  path="/countries" element={<Home />} />
+        <Route  path="/activities" element={<ActivityCreate />} />
+        <Route  path="/countries/details/:id" element={<CountryDetails />} />
+        <Route  path="/countries/search" element={<CountryFiltered />} />
+      </Routes>
 
     </div>
   );

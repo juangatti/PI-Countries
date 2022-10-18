@@ -16,7 +16,13 @@ export default function Paginado({numberOfButtons}) {
     }
 
 
-  return <Grid.Container gap={2} justify="center" align="center">
-<Pagination rounded  shadow color="secondary" total={numberOfButtons} initialPage={1} onChange= { (e) => handleChange(e)} controls="true" />    
-</Grid.Container>;
+  return <div>
+{
+  numberOfButtons && numberOfButtons.map((e) =>{
+    return (
+      <button onClick={handleChange}></button>
+    )
+  })
+} 
+</div>;
 }

@@ -2,10 +2,11 @@ import React, { Suspense} from "react"
 import Nav from "../Nav/nav"
 import FiltersOrder from "../Nav/filters&order"
 import styles from './home.module.css'
-import Paginado from "../Paginado/paginado"
+
 import { getAll } from '../../actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect,  } from 'react';
+
 const Cards = React.lazy (() => import("../Cards/cards") )
 
 
@@ -42,7 +43,6 @@ export default function Home() {
                 <div className={`${styles.cardsContainer}`}>
                  <Suspense fallback={<div>Loading...</div>}>   
                 <Cards currentCountry={currentCountry} />
-                <Paginado  numberOfButtons={numberOfButtons} />
                 </Suspense>
             </div>
         </div>

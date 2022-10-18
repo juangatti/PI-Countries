@@ -4,14 +4,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black;
+    text-decoration: blink;
 }
 
 .cardWrapper {
-    background-color: rgba(219, 219, 213, 0.2);
+   
     margin: 10px;
     padding: 15px;
-    border-radius: 10px;
-    border: currentColor    ;
+     
 }
 
 .title{
@@ -24,4 +25,8 @@
 .continent{
     font-family: cursive;
     color: black;
+}
+
+.imagen{
+    width: 60%;
 }

@@ -1,21 +1,22 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styles from './card.module.css'
-import { Grid } from '@nextui-org/react';
-import { Card } from '@nextui-org/react';
-
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 
 export default function Cardx(props) {
     return (
-        <Grid xs={4}>
+        < >
+                <Card style={{ width: '18rem'}} >
             <Link className={styles.center} to={`/countries/details/${props.id}`}  >
-                <Card width="55%" justify="center" alignItems="center" direction="column">
-                        <h4 className={styles.title}>  {props.id} </h4>
-                        <img src={props.flag} alt="Flag not found" width="150px" height="100px" />
-                        <p className={styles.continent}> {props.name}</p>
-                </Card>
+                    <Card.Body>
+                        <Card.Title>  {props.id} </Card.Title>
+                        <Card.Img src={props.flag} alt="Flag not found" />
+                        <Card.Text> {props.name}</Card.Text>
+                    </Card.Body>
             </Link>
-    </Grid>
+                </Card>
+    </>
     )
 }

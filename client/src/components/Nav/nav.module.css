@@ -4,3 +4,48 @@
     font-weight: bold;
     text-decoration: none;
 }
+
+
+
+.NavContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 5rem;
+    position: sticky;
+    top: 0;
+    background-color: #331481;
+}
+
+
+.SpanContainer{
+    margin-left: 25rem;
+    padding-top: 1.5rem;
+}
+
+.SpanLink{
+    color: whitesmoke;
+    font-family: cursive;
+    text-decoration: blink;
+}
+
+.SpanLink:hover{
+    color: #C468F8;
+    text-decoration: underline;
+}
+
+
+.FiltersContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
