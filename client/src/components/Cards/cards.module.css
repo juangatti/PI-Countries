@@ -1,7 +1,9 @@
-.cards {
+.CardContainer{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-between;
     justify-content: space-around;
     align-items: center;
+    width: 60%;
 }

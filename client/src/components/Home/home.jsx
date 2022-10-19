@@ -40,7 +40,7 @@ export default function Home() {
         <div>
             <Nav />
             <FiltersOrder />
-                <div className={`${styles.cardsContainer}`}>
+                <div className={styles.HomeContainer}>
                  <Suspense fallback={<div>Loading...</div>}>   
                 <Cards currentCountry={currentCountry} />
                 </Suspense>

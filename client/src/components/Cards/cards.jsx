@@ -10,7 +10,7 @@ export default function Cards({currentCountry}) {
     
 
     return (      
-        <div className={s.cards} >
+        <div className={s.CardContainer} >
             {currentCountry && currentCountry.map((e) => {
                 return (<Cardx key={e.id} id={e.id} region={e.region} flag={e.flag} name={e.name} />)
             })}
