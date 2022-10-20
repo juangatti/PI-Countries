@@ -1,0 +1,23 @@
+.FooterContainer{
+width: 100%;
+display: flex;
+flex-wrap: nowrap;
+align-content: center;
+justify-content: space-around;
+align-items: center;
+background-color: #421ca0;
+color: whitesmoke;
+height: 2rem;
+bottom: 0;
+position: absolute;
+}
+
+.LinksFooter{
+    color: whitesmoke !important; 
+    text-decoration: none !important;
+}
+
+.LinksFooter:hover{
+    color:  #C468F8 !important;
+    text-decoration: underline !important;
+}

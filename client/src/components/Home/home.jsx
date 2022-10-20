@@ -2,7 +2,7 @@ import React, { Suspense} from "react"
 import Nav from "../Nav/nav"
 import FiltersOrder from "../Nav/filters&order"
 import styles from './home.module.css'
-
+import Footer from "../Footer/footer"
 import { getAll } from '../../actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect,  } from 'react';
@@ -45,6 +45,7 @@ export default function Home() {
                 <Cards currentCountry={currentCountry} />
                 </Suspense>
             </div>
+            
         </div>
     )
 }

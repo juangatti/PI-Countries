@@ -5,6 +5,8 @@ import { createActivity, } from '../../actions/actions';
 import { Link } from "react-router-dom"
 import s from "./activityform.module.css"
 
+
+
 export default function ActivityCreate() {
 
 
@@ -47,13 +49,22 @@ export default function ActivityCreate() {
 
     return (
         <div>
-            <div>
-                <Link to="/countries">
-                    Home
-                </Link>
+            <div className={s.NavContainer} > 
+        <div>
+          <Link to="/countries">
+            <img
+              src="https://i.pinimg.com/originals/b9/93/02/b99302e5e4d36d7a4af5bf6f17583008.png"
+              alt="mundo"
+              height="60"
+              width="60"
+            />
+          </Link>
+        </div>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
-                <div>
+            <div className={s.formContainer}>
+                <h3> Create Your Own Activity</h3>
+            <form onSubmit={(e) => handleSubmit(e)} autoComplete="off" className={s.FormGrounds}>
+                
                     <label>Name</label>
                     <input
 
@@ -63,12 +74,14 @@ export default function ActivityCreate() {
                         name="name"
                         value={infoForm.name}
                         onChange={e => handleChange(e)}
+                       className={s.inputsFields}
                     />
-                </div>
+                
 
-                <div>
+                
                     <label>Select difficulty</label>
                     <select
+                        className={s.inputsFields}
                         name="difficulty"
                         value={infoForm.difficulty}
                         id="difficulty"
@@ -80,11 +93,12 @@ export default function ActivityCreate() {
                         <option value={4}>4</option>
                         <option value={5}>5</option>
                     </select>
-                </div>
+                
 
-                <div>
+                
                     <label>Duration in hours</label>
                     <select
+                    className={s.inputsFields}
                         name="duration"
                         value={infoForm.duration}
                         id="duration"
@@ -115,21 +129,28 @@ export default function ActivityCreate() {
                         <option value={23}>23</option>
                         <option value={24}>24</option>
                     </select>
-                </div>
+                
 
-                <div>
+                
                     <label>Select season</label>
-                    <select name="season" value={infoForm.season} id="season" onChange={e => handleChange(e)}>
+                    <select 
+                    name="season" 
+                    value={infoForm.season} 
+                    id="season" onChange={e => handleChange(e)} 
+                    className={s.inputsFields}
+                    >
                         <option value="Autum">Autum</option>
                         <option value="Winter">Winter</option>
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
                     </select>
-                </div>
+                
 
-                <div >
+                
                     <label>Select Countries: </label>
-                    <select onChange={e => addCountry(e)}>
+                    <select 
+                    onChange={e => addCountry(e)}
+                    className={s.inputsFields}>
                         <option> - </option>
                         {
                             countries && countries.map(country => {
@@ -139,14 +160,15 @@ export default function ActivityCreate() {
                     <div>
                         {
                             infoForm.countryName?.map(country => {
-                                return <input value={country} key={country} />
+                                return <input value={country} key={country} className={s.inputsFields} />
                             })
                         }
                     </div>
-                </div>
+                
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit"  className={s.inputButton}/>
             </form>
+            </div>
 
         </div>
     );

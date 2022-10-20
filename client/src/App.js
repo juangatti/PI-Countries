@@ -6,7 +6,7 @@ import Home from './components/Home/home';
 import CountryDetails from './components/CountryDetail/countryDetail';
 import CountryFiltered from './components/CountryFiltered/countryFiltered'
 import ActivityCreate from './components/Activity/activityForm';
-
+import Footer from './components/Footer/footer';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route  path="/countries/details/:id" element={<CountryDetails />} />
         <Route  path="/countries/search" element={<CountryFiltered />} />
       </Routes>
-
+    <Footer/>
     </div>
   );
 }
