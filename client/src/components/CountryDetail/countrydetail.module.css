@@ -1,0 +1,22 @@
+.DetailAllContainer{
+    width: 100%;
+    background-color: bisque;
+    height: 655px;
+}
+
+
+
+.TotalContainer{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.DetailCountryContainer{
+    width: 50%;
+    
+}
+
+.ActivityContainer{
+    width: 50%;
+}
