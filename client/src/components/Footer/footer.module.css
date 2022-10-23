@@ -9,7 +9,7 @@ background-color: #421ca0;
 color: whitesmoke;
 height: 2rem;
 bottom: 0;
-position: relative;
+position: absolute;
 }
 
 .LinksFooter{

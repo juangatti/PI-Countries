@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[618],{5618:function(n,e,r){r.r(e),r.d(e,{default:function(){return u}});r(2791);var a=r(511),i="cards_CardContainer__VFG7a",t=r(184);function u(n){var e=n.currentCountry;return(0,t.jsx)("div",{className:i,children:e&&e.map((function(n){return(0,t.jsx)(a.Z,{id:n.id,region:n.region,flag:n.flag,name:n.name},n.id)}))})}}}]);
+//# sourceMappingURL=618.8f94988b.chunk.js.map
